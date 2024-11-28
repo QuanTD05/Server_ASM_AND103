@@ -89,7 +89,8 @@ router.post('/add_xe', upload.single('anh'), async (req, res) => {
             namSX: data.namSX,
             hang: data.hang,
             gia: data.gia,
-            anh: imageUrl,  // Lưu đường dẫn ảnh vào cột "anhxe"
+            anh: imageUrl,
+            mota: data.mota,  // Lưu đường dẫn ảnh vào cột "anhxe"
         });
 
         // Lưu xe mới vào cơ sở dữ liệu
@@ -177,6 +178,7 @@ router.put('/update/:id', async (req, res) => {
         updatecar.hang = data.hang ?? updatecar.hang;
         updatecar.gia = data.gia ?? updatecar.gia;
         updatecar.anh = data.anh ?? updatecar.anh;
+        updatecar.mota = data.mota ?? updatecar.mota;
 
         // Lưu thay đổi
         const result = await updatecar.save();

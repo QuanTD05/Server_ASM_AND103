@@ -119,6 +119,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const path = require('path');
 const carRouter = require('./routes/carRouter'); // Importing carRouter
+const cartRoute = require('./routes/cartRouter');
 
 const app = express();
 const port = 3000;
@@ -133,13 +134,14 @@ app.use(express.urlencoded({ extended: true }));
 app.use('/uploads', express.static(path.join(__dirname, 'routes/uploads')));
 
 // MongoDB connection
-const uri = 'mongodb+srv://admin1:OUe9gKOGZE0T9rAy@cluster0.dfdlq.mongodb.net/MD19303';
+const uri = 'mongodb+srv://admin1:lMNGOrLX5ry4kifh@cluster0.dfdlq.mongodb.net/MD19303';
 mongoose.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true })
   .then(() => console.log('Connected to MongoDB'))
   .catch((error) => console.error('Error connecting to MongoDB', error));
 
 // Use the carRouter for all car-related endpoints
 app.use('/api/cars', carRouter);
+app.use('/api/cart', cartRoute);
 
 // Start the server
 app.listen(port, () => {

@@ -18,6 +18,10 @@ const CarSchema = new mongoose.Schema({
     },
     anh: {
         type: String
+    },
+    mota: {
+        type: String,
+        required: true
     }
 })
 
