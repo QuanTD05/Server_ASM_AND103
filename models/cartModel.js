@@ -1,22 +1,20 @@
 const mongoose = require('mongoose');
 
-const CartSchema = new mongoose.Schema({
-    productId: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'car', // Refers to the 'car' collection defined by CarModel
-        required: true
-    },
-    quantity: {
-        type: Number,
-        required: true,
-        default: 1
-    },
-    price: {
-        type: Number,
-        required: true
-    }
+// Định nghĩa schema giỏ hàng
+const cartSchema = new mongoose.Schema({
+   
+   
+        
+            productName: { type: String, required: true }, // Tên sản phẩm
+            quantity: { type: Number }, // Số lượng
+            price: { type: Number }, // Giá sản phẩm
+            imageUrl: { type: String, required: true }, // URL ảnh sản phẩm
+        
+    
+   
 });
 
-const Cart = mongoose.model('cart', CartSchema);
 
-module.exports = Cart;
+
+
+module.exports = mongoose.model('Cart', cartSchema);
